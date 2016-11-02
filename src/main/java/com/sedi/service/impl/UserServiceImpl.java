@@ -3,11 +3,12 @@ package com.sedi.service.impl;
 import com.sedi.entity.UserEntity;
 import com.sedi.repository.UserRepository;
 import com.sedi.service.UserService;
-import com.sun.xml.internal.ws.developer.MemberSubmissionAddressing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by csw on 2016/11/1 10:15.
@@ -37,6 +38,10 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = userRepository.findOne(id);
         userRepository.delete(id);
         return userEntity;
+    }
+
+    public List<UserEntity> findAllUser() {
+        return (List<UserEntity>) userRepository.findAll();
     }
 
 }

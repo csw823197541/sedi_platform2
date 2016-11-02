@@ -12,4 +12,6 @@ public interface UserService {
     UserEntity createUser(UserEntity userEntity);
     UserEntity updateUser(UserEntity user);
     UserEntity deleteUser(Integer id);
+
+    List<UserEntity> findAllUser();
 }
