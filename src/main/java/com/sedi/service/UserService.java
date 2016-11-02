@@ -14,4 +14,6 @@ public interface UserService {
     UserEntity deleteUser(Integer id);
 
     List<UserEntity> findAllUser();
+
+    UserEntity findById(Integer id);
 }

@@ -13,7 +13,7 @@ import java.util.List;
  * Explain:
  */
 @RestController
-@RequestMapping("api/ Users")
+@RequestMapping("api/users")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -22,6 +22,12 @@ public class UserController {
     public List<UserEntity> getAll() {
 
         return userService.findAllUser();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public UserEntity findOne(@PathVariable Integer id) {
+
+        return userService.findById(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)

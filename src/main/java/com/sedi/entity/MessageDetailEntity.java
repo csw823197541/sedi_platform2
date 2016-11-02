@@ -14,20 +14,13 @@ public class MessageDetailEntity {
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;//key
 
-    @Column(name = "content")
-    private String content;//报文内容
+    private String reContent;//接收到的报文内容
 
-    @OneToOne(fetch = FetchType.EAGER , mappedBy = "message")
-    @JoinColumn(name = "message_Entity" )
+    @Column(name = "ge_content")
+    private String geContent;//生成的报文内容
+
+    @OneToOne(mappedBy = "messageDetailEntity")
     private MessageEntity messageEntity;
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
 
     public Integer getId() {
         return id;

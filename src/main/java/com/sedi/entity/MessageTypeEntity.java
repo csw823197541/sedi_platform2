@@ -10,6 +10,7 @@ public class MessageTypeEntity {
     private String type;//报文类型
     private String direction;//接收receive、发送send
     private String className;//处理该报文对应的groovy插件类名
+    private String processMethod;//处理该报文的方法
     private String note;//备注
 
     public MessageTypeEntity(String type, String direction, String className, String note) {
