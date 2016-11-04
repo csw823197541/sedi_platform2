@@ -1,5 +1,6 @@
 package com.sedi.controller;
 
+import com.sedi.component.BaseComponent;
 import com.sedi.entity.UserEntity;
 import com.sedi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by csw on 2016/11/1 10:14.
@@ -14,7 +16,8 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("api/users")
-public class UserController {
+public class UserController extends BaseComponent{
+
     @Autowired
     private UserService userService;
 
@@ -26,6 +29,8 @@ public class UserController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public UserEntity findOne(@PathVariable Integer id) {
+
+        log.info(String.format("Receive user's id is: [%d]", id));
 
         return userService.findById(id);
     }

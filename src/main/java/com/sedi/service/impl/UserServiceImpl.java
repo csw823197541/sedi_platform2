@@ -3,6 +3,7 @@ package com.sedi.service.impl;
 import com.sedi.entity.UserEntity;
 import com.sedi.repository.UserRepository;
 import com.sedi.service.UserService;
+import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Transactional
     public UserEntity createUser(UserEntity userEntity) {
-//        Validate.notNull(userEntity, "The userName must not be null, find failure.");
+        Validate.notNull(userEntity, "The userName must not be null, find failure.");
         UserEntity created = userRepository.save(userEntity);
         return created;
 
