@@ -13,7 +13,7 @@ public class MessageDetailEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;//key
-
+    @Column(name = "re_content")
     private String reContent;//接收到的报文内容
 
     @Column(name = "ge_content")
@@ -36,5 +36,32 @@ public class MessageDetailEntity {
 
     public void setMessageEntity(MessageEntity messageEntity) {
         this.messageEntity = messageEntity;
+    }
+
+    public String getReContent() {
+        return reContent;
+    }
+
+    public void setReContent(String reContent) {
+        this.reContent = reContent;
+    }
+
+    public String getGeContent() {
+        return geContent;
+    }
+
+    public void setGeContent(String geContent) {
+        this.geContent = geContent;
+    }
+
+    public MessageDetailEntity changeInfoToUpdated(MessageDetailEntity updated) {
+
+        if (updated != null) {
+            updated.setReContent(this.reContent);
+            updated.setGeContent(this.geContent);
+            updated.setMessageEntity(this.messageEntity);
+        }
+
+        return updated;
     }
 }

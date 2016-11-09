@@ -19,7 +19,7 @@ public class MessageEntity {
     @Column(name = "message_type")
     private String messageType;//报文类型
 
-    @Column(name = "message_id")
+    @Column(name = "message_id", nullable = false)
     private String messageId;//报文ID
 
     @Column(name = "unit_Id")
@@ -28,12 +28,19 @@ public class MessageEntity {
     @Column(name = "vessel_visitId")
     private String vesselVisitId;//航次
 
+    @Column(name = "bill_No")
     private String billNo;//提单号
 
+    @Column(name = "key1")
     private String key1;//查询条件1
+
+    @Column(name = "key2")
     private String key2;
+
+    @Column(name = "key3")
     private String key3;
 
+    @Column(name = "manual")
     private String manual;//是否手工处理
 
     @Column(name = "status")
@@ -53,7 +60,7 @@ public class MessageEntity {
     @Column(name = "note")
     private String note;//备注
 
-    @OneToOne()
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "message_detail")
     private MessageDetailEntity messageDetailEntity;
 
@@ -186,5 +193,28 @@ public class MessageEntity {
 
     public void setMessageDetailEntity(MessageDetailEntity messageDetailEntity) {
         this.messageDetailEntity = messageDetailEntity;
+    }
+
+    public MessageEntity changeInfoToUpdated(MessageEntity updated) {
+
+        if (updated != null) {
+            updated.setBillNo(this.billNo);
+            updated.setKey1(this.key1);
+            updated.setKey2(this.key2);
+            updated.setKey3(this.key3);
+            updated.setCreateTime(this.createTime);
+            updated.setManual(this.manual);
+            updated.setMessageId(this.messageId);
+            updated.setMessageType(this.messageType);
+            updated.setSendTime(this.sendTime);
+            updated.setMessageDetailEntity(this.messageDetailEntity);
+            updated.setNote(this.note);
+            updated.setReason(this.reason);
+            updated.setStatus(this.status);
+            updated.setUnitId(this.unitId);
+            updated.setVesselVisitId(this.vesselVisitId);
+        }
+
+        return updated;
     }
 }
