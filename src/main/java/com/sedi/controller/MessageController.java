@@ -14,8 +14,8 @@ import java.util.List;
  * Created by csw on 2016/11/2.
  */
 @RestController
-@RequestMapping("api/ Messages")
-public class MessageController extends BaseController{
+@RequestMapping("api/messages")
+public class MessageController extends BaseController {
     @Autowired
     private MessageService messageService;
 
@@ -24,9 +24,10 @@ public class MessageController extends BaseController{
 
         return messageService.findAllMessage();
     }
+
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageEntity create(@RequestBody(required = true) MessageEntity messageEntity){
+    public MessageEntity create(@RequestBody(required = true) MessageEntity messageEntity) {
 
         Validate.notNull(messageEntity, "The message must not be null, create failure.");
         Validate.notNull(messageEntity.getMessageId(), "The id of message must not be null, create failure.");
@@ -35,10 +36,11 @@ public class MessageController extends BaseController{
         MessageEntity created = messageService.createMessage(messageEntity);
         return created;
     }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.RESET_CONTENT)
     public MessageEntity update(@PathVariable Integer id,
-                                @RequestBody MessageEntity messageEntity){
+                                @RequestBody MessageEntity messageEntity) {
         Validate.notNull(messageEntity, "The message must not be null, create failure.");
         Validate.notNull(id, "The id must not be null, create failure.");
 
@@ -47,9 +49,10 @@ public class MessageController extends BaseController{
         MessageEntity updated = messageService.updateMessage(messageEntity);
         return updated;
     }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
-    public MessageEntity delete(@PathVariable Integer id){
+    public MessageEntity delete(@PathVariable Integer id) {
 
         Validate.notNull(id, "The id must not be null, delete failure.");
 

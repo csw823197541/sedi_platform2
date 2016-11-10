@@ -22,15 +22,16 @@ public class MessageDetailServiceImpl extends BaseService implements MessageDeta
     @Autowired
     private MessageDetailRepository messageDetailRepository;
 
-    public MessageDetailEntity createMessageDetail(MessageDetailEntity messageDetailEntity){
+    public MessageDetailEntity createMessageDetail(MessageDetailEntity messageDetailEntity) {
 
         Validate.notNull(messageDetailEntity, "The message must not be null, create failure.");
 
         MessageDetailEntity created = messageDetailRepository.save(messageDetailEntity);
         return created;
     }
+
     @Transactional
-    public MessageDetailEntity updateMessageDetail(MessageDetailEntity messageDetailEntity){
+    public MessageDetailEntity updateMessageDetail(MessageDetailEntity messageDetailEntity) {
 
         Validate.notNull(messageDetailEntity.getId(), "The id of messageDetail must not be null, create failure.");
         Validate.notNull(messageDetailEntity, "The messageDetail must not be null, create failure.");
@@ -38,7 +39,7 @@ public class MessageDetailServiceImpl extends BaseService implements MessageDeta
         log.info(String.format("update Service receive message'mssageDetailId is: [%s]", messageDetailEntity.getId()));
 
         MessageDetailEntity updated = messageDetailRepository.findOne(messageDetailEntity.getId());
-        if (updated == null){
+        if (updated == null) {
             throw new ObjectNotFoundException("用户不存在");
         }
 
@@ -47,12 +48,16 @@ public class MessageDetailServiceImpl extends BaseService implements MessageDeta
 
         return saved;
     }
+
     @Transactional
-    public MessageDetailEntity deleteMessageDetail(Integer id){
-        Validate.notNull(id,"The id must not be null, create failure.");
+    public MessageDetailEntity deleteMessageDetail(Integer id) {
+        Validate.notNull(id, "The id must not be null, create failure.");
         MessageDetailEntity deleted = messageDetailRepository.findOne(id);
         messageDetailRepository.delete(id);
         return deleted;
     }
-    public List<MessageDetailEntity> findAllMessageDetail(){return (List<MessageDetailEntity>) messageDetailRepository.findAll();}
+
+    public List<MessageDetailEntity> findAllMessageDetail() {
+        return (List<MessageDetailEntity>) messageDetailRepository.findAll();
+    }
 }

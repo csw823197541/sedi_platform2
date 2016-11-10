@@ -9,6 +9,6 @@ import java.util.List;
  * Created by csw on 2016/11/1 10:14.
  * Explain:
  */
-public interface UserRepository extends PagingAndSortingRepository<UserEntity,Integer> {
+public interface UserRepository extends PagingAndSortingRepository<UserEntity, Integer> {
 
 }

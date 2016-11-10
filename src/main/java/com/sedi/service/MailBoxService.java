@@ -9,7 +9,9 @@ import java.util.List;
  */
 public interface MailBoxService {
     MailBoxEntity createMailBox(MailBoxEntity mailBoxEntity);
+
     MailBoxEntity updateMailBox(MailBoxEntity mailBoxEntity);
+
     MailBoxEntity deleteMailBox(Integer id);
 
     List<MailBoxEntity> findAllMailBox();

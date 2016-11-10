@@ -21,7 +21,7 @@ public class MessageServiceImpl extends BaseService implements MessageService {
     @Autowired
     private MessageRepository messageRepository;
 
-    public MessageEntity createMessage(MessageEntity messageEntity){
+    public MessageEntity createMessage(MessageEntity messageEntity) {
 
         Validate.notNull(messageEntity, "The message must not be null, create failure.");
 
@@ -30,15 +30,15 @@ public class MessageServiceImpl extends BaseService implements MessageService {
     }
 
     @Transactional
-    public MessageEntity updateMessage(MessageEntity messageEntity){
+    public MessageEntity updateMessage(MessageEntity messageEntity) {
 
         Validate.notNull(messageEntity.getId(), "The id of message must not be null, create failure.");
         Validate.notNull(messageEntity, "The message must not be null, create failure.");
 
-        log.info(String.format("update Service receive message'mssageId is: [%s]", messageEntity.getMessageId()));
+        log.info(String.format("update service receive message'mssageId is: [%s]", messageEntity.getMessageId()));
 
         MessageEntity updated = messageRepository.findOne(messageEntity.getId());
-        if (updated == null){
+        if (updated == null) {
             throw new ObjectNotFoundException("用户不存在");
         }
 
@@ -48,11 +48,11 @@ public class MessageServiceImpl extends BaseService implements MessageService {
     }
 
     @Transactional
-    public MessageEntity deleteMessage(Integer id){
+    public MessageEntity deleteMessage(Integer id) {
         Validate.notNull(id, "The id must not be null, create failure.");
 
-         MessageEntity deleted = messageRepository.findOne(id);
-        if(deleted == null) {
+        MessageEntity deleted = messageRepository.findOne(id);
+        if (deleted == null) {
             throw new ObjectNotFoundException("用户不存在");
         }
 
@@ -60,5 +60,7 @@ public class MessageServiceImpl extends BaseService implements MessageService {
         return deleted;
     }
 
-    public List<MessageEntity> findAllMessage(){return (List<MessageEntity>)messageRepository.findAll();}
+    public List<MessageEntity> findAllMessage() {
+        return (List<MessageEntity>) messageRepository.findAll();
+    }
 }

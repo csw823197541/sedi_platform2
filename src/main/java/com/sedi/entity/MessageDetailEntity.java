@@ -19,7 +19,7 @@ public class MessageDetailEntity {
     @Column(name = "ge_content")
     private String geContent;//生成的报文内容
 
-    @OneToOne(mappedBy = "messageDetailEntity")
+    @OneToOne(mappedBy = "messageDetail")
     private MessageEntity messageEntity;
 
     public Integer getId() {

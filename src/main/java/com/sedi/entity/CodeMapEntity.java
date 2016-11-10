@@ -8,7 +8,7 @@ import java.util.Set;
  * Explain:
  */
 @Entity
-@Table(name ="code_map")
+@Table(name = "code_map")
 public class CodeMapEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -68,8 +68,8 @@ public class CodeMapEntity {
         this.codeMapDetailEntitys = codeMapDetailEntitys;
     }
 
-    public CodeMapEntity changeInfoToUpdated(CodeMapEntity updated){
-        if (updated != null){
+    public CodeMapEntity changeInfoToUpdated(CodeMapEntity updated) {
+        if (updated != null) {
             updated.setNote(this.note);
             updated.setCodeMapId(this.codeMapId);
             updated.setCodeMapName(this.codeMapName);

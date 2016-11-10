@@ -62,7 +62,7 @@ public class MessageEntity {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "message_detail")
-    private MessageDetailEntity messageDetailEntity;
+    private MessageDetailEntity messageDetail;
 
     //报文内容参考MessageDetailEntity
 
@@ -187,12 +187,12 @@ public class MessageEntity {
         this.note = note;
     }
 
-    public MessageDetailEntity getMessageDetailEntity() {
-        return messageDetailEntity;
+    public MessageDetailEntity getMessageDetail() {
+        return messageDetail;
     }
 
-    public void setMessageDetailEntity(MessageDetailEntity messageDetailEntity) {
-        this.messageDetailEntity = messageDetailEntity;
+    public void setMessageDetail(MessageDetailEntity messageDetail) {
+        this.messageDetail = messageDetail;
     }
 
     public MessageEntity changeInfoToUpdated(MessageEntity updated) {
@@ -207,7 +207,7 @@ public class MessageEntity {
             updated.setMessageId(this.messageId);
             updated.setMessageType(this.messageType);
             updated.setSendTime(this.sendTime);
-            updated.setMessageDetailEntity(this.messageDetailEntity);
+            updated.setMessageDetail(this.messageDetail);
             updated.setNote(this.note);
             updated.setReason(this.reason);
             updated.setStatus(this.status);

@@ -9,7 +9,9 @@ import java.util.List;
  */
 public interface PluginCodeService {
     PluginCodeEntity createPluginCode(PluginCodeEntity pluginCodeEntity);
+
     PluginCodeEntity updatePluginCode(PluginCodeEntity pluginCode);
+
     PluginCodeEntity deletePluginCode(Integer id);
 
     List<PluginCodeEntity> findAllPluginCode();

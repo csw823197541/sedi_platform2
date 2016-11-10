@@ -9,7 +9,9 @@ import java.util.List;
  */
 public interface CodeMapDetailService {
     CodeMapDetailEntity createCodeMapDetail(CodeMapDetailEntity codeMapDetailEntity);
+
     CodeMapDetailEntity updateCodeMapDetail(CodeMapDetailEntity codeMapDetailEntity);
+
     CodeMapDetailEntity deleteCodeMapDetail(Integer id);
 
     List<CodeMapDetailEntity> findAllCodeMapDetail();

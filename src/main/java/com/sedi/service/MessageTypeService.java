@@ -9,7 +9,9 @@ import java.util.List;
  */
 public interface MessageTypeService {
     MessageTypeEntity createMessageType(MessageTypeEntity messageTypeEntity);
+
     MessageTypeEntity updateMessageType(MessageTypeEntity messageTypeEntity);
+
     MessageTypeEntity deleteMessageType(Integer id);
 
     List<MessageTypeEntity> findAllMessageType();

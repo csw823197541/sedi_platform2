@@ -6,5 +6,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 /**
  * Created by csw on 2016/11/4.
  */
-public interface CodeMapDetailRepository extends PagingAndSortingRepository<CodeMapDetailEntity,Integer> {
+public interface CodeMapDetailRepository extends PagingAndSortingRepository<CodeMapDetailEntity, Integer> {
 }

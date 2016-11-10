@@ -50,8 +50,8 @@ public class PluginCodeEntity {
         this.code = code;
     }
 
-    public PluginCodeEntity changeInfoToUpdated(PluginCodeEntity updated){
-        if (updated != null){
+    public PluginCodeEntity changeInfoToUpdated(PluginCodeEntity updated) {
+        if (updated != null) {
             updated.setClassName(this.className);
             updated.setCode(this.code);
             updated.setDescription(this.description);

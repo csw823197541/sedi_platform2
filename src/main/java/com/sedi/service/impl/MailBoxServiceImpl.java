@@ -20,37 +20,41 @@ import java.util.List;
 public class MailBoxServiceImpl extends BaseService implements MailBoxService {
 
     @Autowired
-         private MailBoxRepository mailBoxRepository;
+    private MailBoxRepository mailBoxRepository;
 
-        public MailBoxEntity createMailBox(MailBoxEntity mailBoxEntity){
-        Validate.notNull(mailBoxEntity,"The mailBox must not be null, create failure.");
+    public MailBoxEntity createMailBox(MailBoxEntity mailBoxEntity) {
+        Validate.notNull(mailBoxEntity, "The mailBox must not be null, create failure.");
         MailBoxEntity created = mailBoxRepository.save(mailBoxEntity);
         return created;
     }
 
     @Transactional
-        public MailBoxEntity updateMailBox(MailBoxEntity mailBoxEntity) {
-            Validate.notNull(mailBoxEntity, "The mailBox must not be null, create failure.");
-            Validate.notNull(mailBoxEntity.getId(), "The id of mailBox must not be null, create failure.");
+    public MailBoxEntity updateMailBox(MailBoxEntity mailBoxEntity) {
+        Validate.notNull(mailBoxEntity, "The mailBox must not be null, create failure.");
+        Validate.notNull(mailBoxEntity.getId(), "The id of mailBox must not be null, create failure.");
 
-            log.info(String.format("update Service receive mailBox'mailBoxId is: [%s]", mailBoxEntity.getId()));
-            MailBoxEntity updated = mailBoxRepository.findOne(mailBoxEntity.getId());
-            if (updated == null) {
-                throw new ObjectNotFoundException("用户名不存在!");
-            }
-            updated = updated.changeInfoToUpdated(updated);
-            MailBoxEntity saved = mailBoxRepository.save(updated);
-            return saved;
+        log.info(String.format("update Service receive mailBox'mailBoxId is: [%s]", mailBoxEntity.getId()));
+        MailBoxEntity updated = mailBoxRepository.findOne(mailBoxEntity.getId());
+        if (updated == null) {
+            throw new ObjectNotFoundException("用户名不存在!");
         }
+        updated = updated.changeInfoToUpdated(updated);
+        MailBoxEntity saved = mailBoxRepository.save(updated);
+        return saved;
+    }
+
     @Transactional
-         public MailBoxEntity deleteMailBox(Integer id){
-        Validate.notNull(id,"The id must not be null, create failure.");
+    public MailBoxEntity deleteMailBox(Integer id) {
+        Validate.notNull(id, "The id must not be null, create failure.");
         MailBoxEntity deleted = mailBoxRepository.findOne(id);
-        if (deleted == null){
+        if (deleted == null) {
             throw new ObjectNotFoundException("用户不存在!");
         }
         mailBoxRepository.delete(id);
         return deleted;
     }
-    public List<MailBoxEntity> findAllMailBox(){return (List<MailBoxEntity>) mailBoxRepository.findAll();}
+
+    public List<MailBoxEntity> findAllMailBox() {
+        return (List<MailBoxEntity>) mailBoxRepository.findAll();
+    }
 }

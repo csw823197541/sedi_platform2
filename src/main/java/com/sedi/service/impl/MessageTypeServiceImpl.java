@@ -22,7 +22,7 @@ public class MessageTypeServiceImpl extends BaseService implements MessageTypeSe
     @Autowired
     private MessageTypeRepository messageTypeRepository;
 
-    public MessageTypeEntity createMessageType(MessageTypeEntity messageTypeEntity){
+    public MessageTypeEntity createMessageType(MessageTypeEntity messageTypeEntity) {
         Validate.notNull(messageTypeEntity, "The messageType must not be null, create failure.");
         MessageTypeEntity created = messageTypeRepository.save(messageTypeEntity);
 
@@ -30,13 +30,13 @@ public class MessageTypeServiceImpl extends BaseService implements MessageTypeSe
     }
 
     @Transactional
-    public MessageTypeEntity updateMessageType(MessageTypeEntity messageTypeEntity){
-        Validate.notNull(messageTypeEntity.getId(),"The id of messageType must not be null, create failure.");
-        Validate.notNull(messageTypeEntity,"The messageType must not be null, create failure.");
+    public MessageTypeEntity updateMessageType(MessageTypeEntity messageTypeEntity) {
+        Validate.notNull(messageTypeEntity.getId(), "The id of messageType must not be null, create failure.");
+        Validate.notNull(messageTypeEntity, "The messageType must not be null, create failure.");
 
         log.info(String.format("update Service receive messageType'messageTypeId is: [%s]", messageTypeEntity.getId()));
         MessageTypeEntity updated = messageTypeRepository.findOne(messageTypeEntity.getId());
-        if (updated == null){
+        if (updated == null) {
             throw new ObjectNotFoundException("用户不存在");
         }
         updated = updated.changeInfoToUpdated(updated);
@@ -45,17 +45,20 @@ public class MessageTypeServiceImpl extends BaseService implements MessageTypeSe
     }
 
     @Transactional
-    public MessageTypeEntity deleteMessageType(Integer id){
-        Validate.notNull(id,"The id must not be null, create failure.");
+    public MessageTypeEntity deleteMessageType(Integer id) {
+        Validate.notNull(id, "The id must not be null, create failure.");
 
         MessageTypeEntity deleted = messageTypeRepository.findOne(id);
-        if (deleted == null){
+        if (deleted == null) {
             throw new ObjectNotFoundException("用户不存在");
         }
         messageTypeRepository.delete(id);
 
         return deleted;
     }
-    public List<MessageTypeEntity> findAllMessageType(){return (List<MessageTypeEntity>)messageTypeRepository.findAll();}
+
+    public List<MessageTypeEntity> findAllMessageType() {
+        return (List<MessageTypeEntity>) messageTypeRepository.findAll();
+    }
 
 }

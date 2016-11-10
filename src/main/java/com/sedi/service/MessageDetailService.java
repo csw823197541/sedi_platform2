@@ -9,7 +9,9 @@ import java.util.List;
  */
 public interface MessageDetailService {
     MessageDetailEntity createMessageDetail(MessageDetailEntity messageDetailEntity);
+
     MessageDetailEntity updateMessageDetail(MessageDetailEntity messageDetailEntity);
+
     MessageDetailEntity deleteMessageDetail(Integer id);
 
     List<MessageDetailEntity> findAllMessageDetail();

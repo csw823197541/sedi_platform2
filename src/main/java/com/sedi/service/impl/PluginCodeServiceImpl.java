@@ -19,22 +19,23 @@ import java.util.List;
 @Scope("prototype")
 public class PluginCodeServiceImpl extends BaseService implements PluginCodeService {
     @Autowired
-     private PluginCodeRepository pluginCodeRepository;
-     public PluginCodeEntity createPluginCode(PluginCodeEntity pluginCodeEntity){
-         Validate.notNull(pluginCodeEntity,"The pluginCode must not be null, create failure.");
-         PluginCodeEntity saved = pluginCodeRepository.save(pluginCodeEntity);
+    private PluginCodeRepository pluginCodeRepository;
 
-         return saved;
-     }
+    public PluginCodeEntity createPluginCode(PluginCodeEntity pluginCodeEntity) {
+        Validate.notNull(pluginCodeEntity, "The pluginCode must not be null, create failure.");
+        PluginCodeEntity saved = pluginCodeRepository.save(pluginCodeEntity);
+
+        return saved;
+    }
 
     @Transactional
-    public PluginCodeEntity updatePluginCode(PluginCodeEntity pluginCodeEntity){
-        Validate.notNull(pluginCodeEntity,"The pluginCode must not be null, create failure.");
-        Validate.notNull(pluginCodeEntity.getId(),"The id of pluginCode must not be null, create failure.");
+    public PluginCodeEntity updatePluginCode(PluginCodeEntity pluginCodeEntity) {
+        Validate.notNull(pluginCodeEntity, "The pluginCode must not be null, create failure.");
+        Validate.notNull(pluginCodeEntity.getId(), "The id of pluginCode must not be null, create failure.");
 
         log.info(String.format("update Service receive pluginCode'pluginCodeId is: [%s]", pluginCodeEntity.getId()));
         PluginCodeEntity updated = pluginCodeRepository.findOne(pluginCodeEntity.getId());
-        if (updated == null){
+        if (updated == null) {
             throw new ObjectNotFoundException("用户不存在!");
         }
         updated = updated.changeInfoToUpdated(updated);
@@ -43,15 +44,18 @@ public class PluginCodeServiceImpl extends BaseService implements PluginCodeServ
     }
 
     @Transactional
-    public PluginCodeEntity deletePluginCode(Integer id){
-        Validate.notNull(id,"The id must not be null, create failure.");
+    public PluginCodeEntity deletePluginCode(Integer id) {
+        Validate.notNull(id, "The id must not be null, create failure.");
         PluginCodeEntity deleted = pluginCodeRepository.findOne(id);
-        if (deleted == null){
+        if (deleted == null) {
             throw new ObjectNotFoundException("用户不存在!");
         }
         pluginCodeRepository.delete(id);
         return deleted;
     }
-    public List<PluginCodeEntity> findAllPluginCode(){return (List<PluginCodeEntity>)pluginCodeRepository.findAll();}
+
+    public List<PluginCodeEntity> findAllPluginCode() {
+        return (List<PluginCodeEntity>) pluginCodeRepository.findAll();
+    }
 
 }

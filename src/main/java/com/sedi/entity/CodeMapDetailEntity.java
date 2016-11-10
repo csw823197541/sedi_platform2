@@ -68,8 +68,8 @@ public class CodeMapDetailEntity {
         this.codeMapEntity = codeMapEntity;
     }
 
-    public CodeMapDetailEntity changeInfoToUpdated(CodeMapDetailEntity updated){
-        if (updated != null){
+    public CodeMapDetailEntity changeInfoToUpdated(CodeMapDetailEntity updated) {
+        if (updated != null) {
             updated.setNote(this.note);
             updated.setCodeKey(this.codeKey);
             updated.setCodeMapEntity(this.codeMapEntity);

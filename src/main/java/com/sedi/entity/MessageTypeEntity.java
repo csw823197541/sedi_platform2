@@ -19,6 +19,9 @@ public class MessageTypeEntity {
     private String processMethod;//处理该报文的方法
     private String note;//备注
 
+    public MessageTypeEntity() {
+    }
+
     public MessageTypeEntity(String type, String direction, String className, String note) {
         this.type = type;
         this.direction = direction;
@@ -73,8 +76,9 @@ public class MessageTypeEntity {
     public void setNote(String note) {
         this.note = note;
     }
-    public MessageTypeEntity changeInfoToUpdated(MessageTypeEntity updated){
-        if(updated != null){
+
+    public MessageTypeEntity changeInfoToUpdated(MessageTypeEntity updated) {
+        if (updated != null) {
             updated.setClassName(this.className);
             updated.setDirection(this.direction);
             updated.setNote(this.note);

@@ -51,8 +51,9 @@ public class MailBoxEntity {
     public void setNote(String note) {
         this.note = note;
     }
-    public MailBoxEntity changeInfoToUpdated(MailBoxEntity updated){
-        if (updated != null){
+
+    public MailBoxEntity changeInfoToUpdated(MailBoxEntity updated) {
+        if (updated != null) {
             updated.setClassName(this.className);
             updated.setNote(this.note);
             updated.setMailBoxName(this.mailBoxName);

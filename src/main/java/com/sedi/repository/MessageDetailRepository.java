@@ -7,5 +7,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 /**
  * Created by csw on 2016/11/3.
  */
-public interface MessageDetailRepository extends PagingAndSortingRepository<MessageDetailEntity,Integer> {
+public interface MessageDetailRepository extends PagingAndSortingRepository<MessageDetailEntity, Integer> {
 }

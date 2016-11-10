@@ -20,6 +20,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
+
     @Transactional
     public UserEntity createUser(UserEntity userEntity) {
         Validate.notNull(userEntity, "The userName must not be null, find failure.");

@@ -18,25 +18,25 @@ import java.util.List;
 @Component("codeMapDetailService")
 @Scope("prototype")
 public class CodeMapDetailServiceImpl extends BaseService implements CodeMapDetailService {
-    @Autowired
 
+    @Autowired
     private CodeMapDetailRepository codeMapDetailRepository;
 
-    public CodeMapDetailEntity createCodeMapDetail(CodeMapDetailEntity codeMapDetailEntity){
-        Validate.notNull(codeMapDetailEntity,"The codeMapDetail must not be null, create failure.");
+    public CodeMapDetailEntity createCodeMapDetail(CodeMapDetailEntity codeMapDetailEntity) {
+        Validate.notNull(codeMapDetailEntity, "The codeMapDetail must not be null, create failure.");
         CodeMapDetailEntity created = codeMapDetailRepository.save(codeMapDetailEntity);
         return created;
     }
 
     @Transactional
 
-    public CodeMapDetailEntity updateCodeMapDetail(CodeMapDetailEntity codeMapDetailEntity){
-        Validate.notNull(codeMapDetailEntity.getId(),"The id of mailBox must not be null, create failure.");
-        Validate.notNull(codeMapDetailEntity,"The codeMapDetail must not be null, create failure.");
+    public CodeMapDetailEntity updateCodeMapDetail(CodeMapDetailEntity codeMapDetailEntity) {
+        Validate.notNull(codeMapDetailEntity.getId(), "The id of mailBox must not be null, create failure.");
+        Validate.notNull(codeMapDetailEntity, "The codeMapDetail must not be null, create failure.");
 
         log.info(String.format("update Service receive codeMapDetail'codeMapDetaillId is: [%s]", codeMapDetailEntity.getId()));
         CodeMapDetailEntity updated = codeMapDetailRepository.findOne(codeMapDetailEntity.getId());
-        if (updated == null){
+        if (updated == null) {
             throw new ObjectNotFoundException("内容不存在!");
         }
         updated = updated.changeInfoToUpdated(updated);
@@ -46,14 +46,17 @@ public class CodeMapDetailServiceImpl extends BaseService implements CodeMapDeta
 
     @Transactional
 
-    public CodeMapDetailEntity deleteCodeMapDetail(Integer id){
-        Validate.notNull(id,"The id must not be null, create failure.");
+    public CodeMapDetailEntity deleteCodeMapDetail(Integer id) {
+        Validate.notNull(id, "The id must not be null, create failure.");
         CodeMapDetailEntity deleted = codeMapDetailRepository.findOne(id);
-        if (deleted == null){
+        if (deleted == null) {
             throw new ObjectNotFoundException("内容不存在！");
         }
         codeMapDetailRepository.delete(id);
         return deleted;
     }
-    public List<CodeMapDetailEntity> findAllCodeMapDetail(){return (List<CodeMapDetailEntity>) codeMapDetailRepository.findAll();}
+
+    public List<CodeMapDetailEntity> findAllCodeMapDetail() {
+        return (List<CodeMapDetailEntity>) codeMapDetailRepository.findAll();
+    }
 }
