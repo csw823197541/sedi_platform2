@@ -11,4 +11,7 @@ import java.util.List;
  */
 public interface UserRepository extends PagingAndSortingRepository<UserEntity, Integer> {
 
+    UserEntity findByUsernameAndPassword(String username, String password);
+
+    UserEntity findByUsername(String s);
 }

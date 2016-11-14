@@ -18,7 +18,7 @@ public class MailBoxEntity {
 
     @Column(nullable = false)
     private String className;//处理发送报文的groovy类名
-    private String note;
+    private String notes;
 
     public Integer getId() {
         return id;
@@ -44,18 +44,18 @@ public class MailBoxEntity {
         this.className = className;
     }
 
-    public String getNote() {
-        return note;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public MailBoxEntity changeInfoToUpdated(MailBoxEntity updated) {
         if (updated != null) {
             updated.setClassName(this.className);
-            updated.setNote(this.note);
+            updated.setNotes(this.notes);
             updated.setMailBoxName(this.mailBoxName);
 
         }

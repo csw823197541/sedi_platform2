@@ -19,11 +19,13 @@ import java.util.List;
 @Component("messageTypeService")
 @Scope("prototype")
 public class MessageTypeServiceImpl extends BaseService implements MessageTypeService {
+
     @Autowired
     private MessageTypeRepository messageTypeRepository;
 
     public MessageTypeEntity createMessageType(MessageTypeEntity messageTypeEntity) {
         Validate.notNull(messageTypeEntity, "The messageType must not be null, create failure.");
+
         MessageTypeEntity created = messageTypeRepository.save(messageTypeEntity);
 
         return created;
@@ -34,12 +36,15 @@ public class MessageTypeServiceImpl extends BaseService implements MessageTypeSe
         Validate.notNull(messageTypeEntity.getId(), "The id of messageType must not be null, create failure.");
         Validate.notNull(messageTypeEntity, "The messageType must not be null, create failure.");
 
-        log.info(String.format("update Service receive messageType'messageTypeId is: [%s]", messageTypeEntity.getId()));
+        log.info(String.format("update Service receive messageTypeEntity'id is: [%d], messageType is: [%s]", messageTypeEntity.getId(), messageTypeEntity.getType()));
+
         MessageTypeEntity updated = messageTypeRepository.findOne(messageTypeEntity.getId());
         if (updated == null) {
-            throw new ObjectNotFoundException("用户不存在");
+            throw new ObjectNotFoundException("待更新的报文类型不存在！");
         }
-        updated = updated.changeInfoToUpdated(updated);
+
+        updated = messageTypeEntity.changeInfoToUpdated(updated);
+
         MessageTypeEntity saved = messageTypeRepository.save(updated);
         return saved;
     }
@@ -50,8 +55,9 @@ public class MessageTypeServiceImpl extends BaseService implements MessageTypeSe
 
         MessageTypeEntity deleted = messageTypeRepository.findOne(id);
         if (deleted == null) {
-            throw new ObjectNotFoundException("用户不存在");
+            throw new ObjectNotFoundException("待删除的报文类型不存在！");
         }
+
         messageTypeRepository.delete(id);
 
         return deleted;

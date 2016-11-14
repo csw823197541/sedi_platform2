@@ -15,9 +15,9 @@ import java.util.List;
  * Created by csw on 2016/11/1 10:15.
  * Explain:
  */
-@Component("UserService")
+@Component("userService")
 @Scope("prototype")
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseService implements UserService {
     @Autowired
     private UserRepository userRepository;
 
@@ -48,6 +48,22 @@ public class UserServiceImpl implements UserService {
 
     public UserEntity findById(Integer id) {
         return userRepository.findOne(id);
+    }
+
+    public UserEntity findOrgUser(String username, String password) {
+        Validate.notNull(username, "The username must not be null.");
+        Validate.notNull(password, "The password must not be null.");
+        log.info(String.format("Receive login information by userName[%s], password[%s].", username, password));
+
+        UserEntity userEntity = userRepository.findByUsernameAndPassword(username, password);
+
+        return userEntity;
+    }
+
+    public UserEntity findByUsername(String s) {
+        Validate.notNull(s, "The username must not be null.");
+
+        return userRepository.findByUsername(s);
     }
 
 }

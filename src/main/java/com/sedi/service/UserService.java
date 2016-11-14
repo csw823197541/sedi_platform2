@@ -18,4 +18,8 @@ public interface UserService {
     List<UserEntity> findAllUser();
 
     UserEntity findById(Integer id);
+
+    UserEntity findOrgUser(String username, String password);
+
+    UserEntity findByUsername(String s);
 }

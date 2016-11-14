@@ -21,8 +21,8 @@ public class CodeMapEntity {
     @Column(unique = true)
     private String codeMapName;//映射类型名,一般与映射关系Id
 
-    @Column(name = "note")
-    private String note;//
+    @Column(name = "notes")
+    private String notes;//
 
     //参考对象,OneToMany,这个对象是one
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "codeMapEntity")
@@ -52,12 +52,12 @@ public class CodeMapEntity {
         this.codeMapName = codeMapName;
     }
 
-    public String getNote() {
-        return note;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public Set<CodeMapDetailEntity> getCodeMapDetailEntitys() {
@@ -70,7 +70,7 @@ public class CodeMapEntity {
 
     public CodeMapEntity changeInfoToUpdated(CodeMapEntity updated) {
         if (updated != null) {
-            updated.setNote(this.note);
+            updated.setNotes(this.notes);
             updated.setCodeMapId(this.codeMapId);
             updated.setCodeMapName(this.codeMapName);
             updated.setCodeMapDetailEntitys(this.getCodeMapDetailEntitys());

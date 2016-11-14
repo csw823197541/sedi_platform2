@@ -20,8 +20,8 @@ public class CodeMapDetailEntity {
     @Column(name = "code_Value")
     private String codeValue;//映射值
 
-    @Column(name = "note")
-    private String note;
+    @Column(name = "notes")
+    private String notes;
 
     //被参考对象,是many
     @ManyToOne(fetch = FetchType.EAGER)
@@ -52,12 +52,12 @@ public class CodeMapDetailEntity {
         this.codeValue = codeValue;
     }
 
-    public String getNote() {
-        return note;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public CodeMapEntity getCodeMapEntity() {
@@ -70,7 +70,7 @@ public class CodeMapDetailEntity {
 
     public CodeMapDetailEntity changeInfoToUpdated(CodeMapDetailEntity updated) {
         if (updated != null) {
-            updated.setNote(this.note);
+            updated.setNotes(this.notes);
             updated.setCodeKey(this.codeKey);
             updated.setCodeMapEntity(this.codeMapEntity);
             updated.setCodeValue(this.codeValue);

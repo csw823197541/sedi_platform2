@@ -39,4 +39,25 @@ public class MessageTypeController extends BaseController {
         MessageTypeEntity created = messageTypeService.createMessageType(messageTypeEntity);
         return created;
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public MessageTypeEntity update(@PathVariable Integer id,
+                                    @RequestBody MessageTypeEntity messageTypeEntity) {
+        Validate.notNull(messageTypeEntity, "The messageTypeEntity must not be null, update failure.");
+        Validate.notNull(id, "The id of messageTypeEntity must not be null, update failure.");
+
+        log.info(String.format("Controller receive messageTypeEntity'id is: [%d], messageType is: [%s]", messageTypeEntity.getId(), messageTypeEntity.getType()));
+
+        messageTypeEntity.setId(id);
+        MessageTypeEntity updated = messageTypeService.updateMessageType(messageTypeEntity);
+
+        return updated;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public MessageTypeEntity delete(@PathVariable Integer id) {
+        Validate.notNull(id, "The id of messageTypeEntity must not be null, delete failure.");
+
+        return messageTypeService.deleteMessageType(id);
+    }
 }

@@ -57,8 +57,8 @@ public class MessageEntity {
     @Column(name = "create_time")
     private Date createTime;//创建日期
 
-    @Column(name = "note")
-    private String note;//备注
+    @Column(name = "notes")
+    private String notes;//备注
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "message_detail")
@@ -179,12 +179,12 @@ public class MessageEntity {
         this.createTime = createTime;
     }
 
-    public String getNote() {
-        return note;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public MessageDetailEntity getMessageDetail() {
@@ -208,7 +208,7 @@ public class MessageEntity {
             updated.setMessageType(this.messageType);
             updated.setSendTime(this.sendTime);
             updated.setMessageDetail(this.messageDetail);
-            updated.setNote(this.note);
+            updated.setNotes(this.notes);
             updated.setReason(this.reason);
             updated.setStatus(this.status);
             updated.setUnitId(this.unitId);

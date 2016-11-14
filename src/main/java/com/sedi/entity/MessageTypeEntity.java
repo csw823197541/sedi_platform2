@@ -17,16 +17,16 @@ public class MessageTypeEntity {
     private String direction;//接收receive、发送send
     private String className;//处理该报文对应的groovy插件类名
     private String processMethod;//处理该报文的方法
-    private String note;//备注
+    private String notes;//备注
 
     public MessageTypeEntity() {
     }
 
-    public MessageTypeEntity(String type, String direction, String className, String note) {
+    public MessageTypeEntity(String type, String direction, String className, String notes) {
         this.type = type;
         this.direction = direction;
         this.className = className;
-        this.note = note;
+        this.notes = notes;
     }
 
     public Integer getId() {
@@ -69,19 +69,19 @@ public class MessageTypeEntity {
         this.processMethod = processMethod;
     }
 
-    public String getNote() {
-        return note;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public MessageTypeEntity changeInfoToUpdated(MessageTypeEntity updated) {
         if (updated != null) {
             updated.setClassName(this.className);
             updated.setDirection(this.direction);
-            updated.setNote(this.note);
+            updated.setNotes(this.notes);
             updated.setType(this.type);
         }
         return updated;
