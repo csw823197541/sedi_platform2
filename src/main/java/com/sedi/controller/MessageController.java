@@ -38,7 +38,6 @@ public class MessageController extends BaseController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.RESET_CONTENT)
     public MessageEntity update(@PathVariable Integer id,
                                 @RequestBody MessageEntity messageEntity) {
         Validate.notNull(messageEntity, "The message must not be null, create failure.");
@@ -51,7 +50,6 @@ public class MessageController extends BaseController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    @ResponseStatus(HttpStatus.OK)
     public MessageEntity delete(@PathVariable Integer id) {
 
         Validate.notNull(id, "The id must not be null, delete failure.");

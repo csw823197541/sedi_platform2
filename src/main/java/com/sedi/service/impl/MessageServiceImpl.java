@@ -38,13 +38,14 @@ public class MessageServiceImpl extends BaseService implements MessageService {
         log.info(String.format("update service receive message'mssageId is: [%s]", messageEntity.getMessageId()));
 
         MessageEntity updated = messageRepository.findOne(messageEntity.getId());
+
         if (updated == null) {
             throw new ObjectNotFoundException("用户不存在");
         }
 
-        updated = updated.changeInfoToUpdated(updated);
-        MessageEntity saved = messageRepository.save(updated);
-        return saved;
+        updated = messageEntity.changeInfoToUpdated(updated);
+//        updated = messageRepository.save(updated);
+        return messageRepository.save(updated);
     }
 
     @Transactional
