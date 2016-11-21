@@ -22,8 +22,9 @@ public class MessageServiceImpl extends BaseService implements MessageService {
     private MessageRepository messageRepository;
 
     public MessageEntity createMessage(MessageEntity messageEntity) {
-
         Validate.notNull(messageEntity, "The message must not be null, create failure.");
+
+
 
         MessageEntity created = messageRepository.save(messageEntity);
         return created;

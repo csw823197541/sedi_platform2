@@ -19,23 +19,12 @@ public class MessageDetailEntity {
     @Column(name = "ge_content")
     private String geContent;//生成的报文内容
 
-    @OneToOne(mappedBy = "messageDetail")
-    private MessageEntity messageEntity;
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public MessageEntity getMessageEntity() {
-        return messageEntity;
-    }
-
-    public void setMessageEntity(MessageEntity messageEntity) {
-        this.messageEntity = messageEntity;
     }
 
     public String getReContent() {
@@ -59,7 +48,6 @@ public class MessageDetailEntity {
         if (updated != null) {
             updated.setReContent(this.reContent);
             updated.setGeContent(this.geContent);
-            updated.setMessageEntity(this.messageEntity);
         }
 
         return updated;

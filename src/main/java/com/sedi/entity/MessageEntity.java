@@ -64,12 +64,8 @@ public class MessageEntity {
     @Column(name = "notes")
     private String notes;//备注
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "message_detail")
-    private MessageDetailEntity messageDetail;
-
-    //报文内容参考MessageDetailEntity
-
+    @Column(name = "message_detail_id")
+    private Integer messageDetailId;//报文内容详细信息
 
     public Integer getId() {
         return id;
@@ -176,6 +172,7 @@ public class MessageEntity {
         this.sendTime = sendTime;
     }
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getCreateTime() {
         return createTime;
     }
@@ -192,12 +189,12 @@ public class MessageEntity {
         this.notes = notes;
     }
 
-    public MessageDetailEntity getMessageDetail() {
-        return messageDetail;
+    public Integer getMessageDetailId() {
+        return messageDetailId;
     }
 
-    public void setMessageDetail(MessageDetailEntity messageDetail) {
-        this.messageDetail = messageDetail;
+    public void setMessageDetailId(Integer messageDetailId) {
+        this.messageDetailId = messageDetailId;
     }
 
     public MessageEntity changeInfoToUpdated(MessageEntity updated) {
@@ -212,7 +209,7 @@ public class MessageEntity {
             updated.setMessageId(this.messageId);
             updated.setMessageType(this.messageType);
             updated.setSendTime(this.sendTime);
-            updated.setMessageDetail(this.messageDetail);
+            updated.setMessageDetailId(this.messageDetailId);
             updated.setNotes(this.notes);
             updated.setReason(this.reason);
             updated.setStatus(this.status);

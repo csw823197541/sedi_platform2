@@ -7,26 +7,25 @@ import javax.persistence.*;
  * Explain:
  */
 @Entity
-@Table(name = "codemap_detail")
+@Table(name = "code_map_detail")
 public class CodeMapDetailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
-    @Column(name = "code_Key")
+    @Column(name = "code_key")
     private String codeKey;//映射原
 
-    @Column(name = "code_Value")
+    @Column(name = "code_value")
     private String codeValue;//映射值
 
     @Column(name = "notes")
     private String notes;
 
     //被参考对象,是many
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "codeMapId")
-    private CodeMapEntity codeMapEntity;
+    @Column(name = "code_map_id")
+    private Integer codeMapId;
 
     public Integer getId() {
         return id;
@@ -60,19 +59,19 @@ public class CodeMapDetailEntity {
         this.notes = notes;
     }
 
-    public CodeMapEntity getCodeMapEntity() {
-        return codeMapEntity;
+    public Integer getCodeMapId() {
+        return codeMapId;
     }
 
-    public void setCodeMapEntity(CodeMapEntity codeMapEntity) {
-        this.codeMapEntity = codeMapEntity;
+    public void setCodeMapId(Integer codeMapId) {
+        this.codeMapId = codeMapId;
     }
 
     public CodeMapDetailEntity changeInfoToUpdated(CodeMapDetailEntity updated) {
         if (updated != null) {
             updated.setNotes(this.notes);
             updated.setCodeKey(this.codeKey);
-            updated.setCodeMapEntity(this.codeMapEntity);
+            updated.setCodeMapId(this.codeMapId);
             updated.setCodeValue(this.codeValue);
         }
         return updated;

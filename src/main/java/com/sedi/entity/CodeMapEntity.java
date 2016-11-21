@@ -15,7 +15,7 @@ public class CodeMapEntity {
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
-    @Column(name = "codeMap_Id", nullable = false)
+    @Column(name = "code_map_Id", nullable = false)
     private String codeMapId;//映射关系Id
 
     @Column(unique = true)
@@ -23,10 +23,6 @@ public class CodeMapEntity {
 
     @Column(name = "notes")
     private String notes;//
-
-    //参考对象,OneToMany,这个对象是one
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "codeMapEntity")
-    private Set<CodeMapDetailEntity> codeMapDetailEntitys;
 
     public Integer getId() {
         return id;
@@ -60,20 +56,11 @@ public class CodeMapEntity {
         this.notes = notes;
     }
 
-    public Set<CodeMapDetailEntity> getCodeMapDetailEntitys() {
-        return codeMapDetailEntitys;
-    }
-
-    public void setCodeMapDetailEntitys(Set<CodeMapDetailEntity> codeMapDetailEntitys) {
-        this.codeMapDetailEntitys = codeMapDetailEntitys;
-    }
-
     public CodeMapEntity changeInfoToUpdated(CodeMapEntity updated) {
         if (updated != null) {
             updated.setNotes(this.notes);
             updated.setCodeMapId(this.codeMapId);
             updated.setCodeMapName(this.codeMapName);
-            updated.setCodeMapDetailEntitys(this.getCodeMapDetailEntitys());
         }
         return updated;
     }
