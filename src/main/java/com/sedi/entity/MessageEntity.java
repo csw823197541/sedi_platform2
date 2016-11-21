@@ -1,5 +1,9 @@
 package com.sedi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -163,6 +167,7 @@ public class MessageEntity {
         this.reason = reason;
     }
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getSendTime() {
         return sendTime;
     }

@@ -25,6 +25,15 @@ public class MessageController extends BaseController {
         return messageService.findAllMessage();
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public MessageEntity findOne(@PathVariable Integer id) {
+        Validate.notNull(id, "The id must not be null, find failure.");
+
+        MessageEntity messageEntity = messageService.findOneMessage(id);
+
+        return messageEntity;
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public MessageEntity create(@RequestBody(required = true) MessageEntity messageEntity) {

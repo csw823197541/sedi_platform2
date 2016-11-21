@@ -50,7 +50,7 @@ public class MessageServiceImpl extends BaseService implements MessageService {
 
     @Transactional
     public MessageEntity deleteMessage(Integer id) {
-        Validate.notNull(id, "The id must not be null, create failure.");
+        Validate.notNull(id, "The id must not be null, delete failure.");
 
         MessageEntity deleted = messageRepository.findOne(id);
         if (deleted == null) {
@@ -63,5 +63,11 @@ public class MessageServiceImpl extends BaseService implements MessageService {
 
     public List<MessageEntity> findAllMessage() {
         return (List<MessageEntity>) messageRepository.findAll();
+    }
+
+    public MessageEntity findOneMessage(Integer id) {
+        Validate.notNull(id, "The id must not be null, find failure.");
+
+        return messageRepository.findOne(id);
     }
 }

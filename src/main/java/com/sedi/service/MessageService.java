@@ -16,4 +16,6 @@ public interface MessageService {
     MessageEntity deleteMessage(Integer id);
 
     List<MessageEntity> findAllMessage();
+
+    MessageEntity findOneMessage(Integer id);
 }
