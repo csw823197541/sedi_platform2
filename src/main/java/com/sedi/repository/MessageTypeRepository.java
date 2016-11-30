@@ -7,4 +7,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Created by csw on 2016/11/4.
  */
 public interface MessageTypeRepository extends PagingAndSortingRepository<MessageTypeEntity, Integer> {
+    MessageTypeEntity findByType(String messageType);
 }
