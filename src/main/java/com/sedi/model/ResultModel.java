@@ -13,6 +13,11 @@ public class ResultModel {
 
     private final String msg;
 
+    public ResultModel(String msg) {
+        this.code = 200;
+        this.msg = msg;
+    }
+
     public ResultModel(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
